@@ -1,0 +1,426 @@
+AWS @ 7:30 AM (IST) by Mr.Avinash
+Day-1 https://youtu.be/2NHVW7uzww4
+Day-2 https://youtu.be/gBEbztAZgTQ
+Day-3 https://youtu.be/JeB2zxaWyHg
+
+AWS
+Day-1 https://youtu.be/1teu14UED0Q
+Day-2 https://youtu.be/lZBRVYDpivw
+Day-3 https://youtu.be/wW5fiGt-Zck
+Day-4 https://youtu.be/me6AFPaTBnU
+
+https://avinash.s3.amazonaws.com/aws.pdf
+
+
+Link: http://bit.ly/AWS7AVN
+
+
+========================================================================
+
+Cloud COmputing : COmputing resources : (Network, Storage, Servers, Database) : 
+Pay-as-you-go : Pay for the resources you actually used
+
+Tenancy : 
+--> Shared : underlying h/w shared with another customers
+--> Dedicated : Underlying h/w won't share with another cust.. Dedicated to same user.
+
+
+Physical Server : COmpatability 
+Virtual Server : Upgrade / Downgrade
+
+Core Infra Services : Compute, Storage, Network, Hosting, Database, IAM, Security, Application, Migration
+
+CAPEX : Capital Expendature : Very less / No Capital Expen : No Upfront : 
+OPEX : Operational Expendature : Less OPEX : 
+
+Pay-as-you-go : Pay for the resources you actually need/use.
+Pay-as-you-grow : provision resources based on your actual requirement.
+
+_______________________________________________________________________________________
+
+Service Models : SaaS, PaaS, IaaS
+Deployment Models : Public, Private, Community, Hybdrid
+
+________________________________________________________________________________________
+
+
+Deployment models : 
+--> Public Cloud : Open for all.. ex: aws, azure, gcp, rackspace, ibm cloud..
+	Maintenance: Service Provider
+
+--> Private Cloud : Open for Individual organisation..	
+	Main : dedicated team of org / AMC to 3rd party org
+
+--> Community Cloud : Group of org, they build the infra and only they use the infra..
+	Main : dedicated team of one the org / AMC to 3rd party org
+
+--> Hybrid Cloud : Combination of one or more cloud platforms.. Ex: Onprem + aws / aws+ azure / aws +gcp.. Main : Depends on the infra.. 
+
+aws direct connect : Dedicated connection between local network to aws..
+Site-to-Site VPN
+_________________________________________________________________________________
+
+Service Models of Cloud Computing : 
+
+Requirement : Build a website  and deliver to everyone..!!
+
+Traditional Model : On-Premise : 
+
+Requirement : i n eed a webiste, need to work Anywhere from the world.
+--> SaaS : Software as a Service : Lightsail
+--> PaaS : Platform as a Service : Beanstalk
+--> IaaS : Infrastructure as a Service : ec2
+
+===========================================================================================
+
+
+DBA, Network admin, system admin, storage admin, application admin, hosted .. 
+AWS Enginerr/AWS Administrator..
+
+10 friends (sbi, hdfc, icici, bob, indian bank, andhra bank) --> 10k --> 1 lakh
+2 days
+
+2023 --> ?? 30 min..
+
+
+IAM : Identity and Access Management : AWS Account Authentication and Authorisation : User Management.
+
+Storage : S3 : Simple Storage Service : AWS version of Google Drive : 
+
+Compute : EC2 : Elastic Compute Cloud : Service where we can launch servers.. 
+--> ELB : Elastic Load balancer
+--> ASG : Auto Scaling Group (min 1 server - 1000 servers)
+--> How to manage huge number of servers.?
+
+Instance = Server = Box = Azure Vm = Virtual Machine = GCP Engine
+
+VPC : Virtual private Cloud : Network configuration on AWS.. : You can enable communication between vpc / aws accounts also.. 
+
+RDS : Relational Database Service : mysql,mssql,oracle, mariadb,postgresql,aurora.. 
+
+Route53 : DNS Servie on AWS.. : Map Names to IPs and vice versa.. 
+
+Monitoring on AWS : Cloudwatch, Config, EventBridge.. Site24x7, datadog, dyantrace..
+
+Logging on AWS : Cloudtrail, (Server, load balancer, network level)
+
+Application Services : Lambda
+
+DevOps : CICD : Codecommit, codedeploy, code pipeline
+
+IaC : Cloudformation
+
+Containers : ECR and ECS
+
+AWS organisation : To manage multiple AWS accounts..
+
+3 capstone projects ==> We combine all the above services and we deliver an application.
+
+Certification overview and resume key points..
+
+
+Practitioner : 100$+Tax
+SA-A : 150$+Tax
+
+45 Sessions (Not Days) - 2 Months
+
+
+AWS Sandbox : Free AWS account for this batch students.. 3 Months.. 
+
+===========================================================================================
+
+
+CRQ : Change Request : My existing onstance capacity is t2.micro, want to upgrade it to t3.medium.?? ==> CAB Change Advisory Board ==> why.? when.? cost diff.? 
+=> Maintenance windows /GZ Windows ==> Saturday 3:00AM
+==> Validation
+
+
+
+s3: How many chances are there to loss our data..??
+
+Durability : 99.999999999 %   (0.000000001 %).. replicate data across multiple AZs..
+
+Region : no Technical defination.. Physical or geographical location.. Currently we have 31 regions.. 
+Mumbai: ap-south-1
+Hyd : ap-south-2
+
+
+AZ / Availability Zone : Data Center or combination of multiple DCs also.. AWS maintains proper distance between AZs (500 kms).. AZs are independent from another AZ failure.. 
+Every region contains atleast 3 AZs.. 
+Mumbai : 3 AZs : ap-south-1a, ap-south-1b & ap-south-1c
+
+
+Edge Location / PoP (point of Presence Location) : Designed to cache the Data to near by customer location... 
+
+
+
+Linux : traceroute
+Windows : tracert (syntax : tracert google.com)
+ping google.com -t
+
+
+12 Months free tier limitation : 
+==> AWS SandBox : Practice AWS Account..  90% of Services you can practice.. : 3 Months
+You create your own AWS account..??  : Remaining 10% service practice.. : use this account after 3 months.. 
+
+
+--> Email Id and Password.
+
+--> aws.amazon.com/free
+
+
+1. Provide your email address, give account name.. and verify your email.
+
+Root user : Whatever email you are using to create this account. Hiest permissions on aws.. 
+IAM user : Identity and access management user : Limited access on aws..
+
+2. Contact Information. 		
+	--> Business / professional
+	--> Personal
+	
+3. Payment information. : CC/DC required. : Visa/mastercard/amex/discovery 
+--> Deducts 2 INR, Refund back in 72 Hrs
+
+4. Identity verification : Validate Contact information : 
+--> Proviude your phone number, (sms/call) : code : enter code.. 
+
+5. Selecting AWS Support Plan : 
+
+--> Basic Support : Free
+--> Developer SP : 29$/Month
+--> Business SP : 100$/Month
+--> Eneterprise on-ramp : 5.5k$/Month
+--> Enterprise SP : 15k $/Month
+
+6. Review and login.
+
+===========================================================================================
+
+1). Account and Billing related queries ==> Free for all support plans, 24x7 support.. 
+2). Technical Assiatance ==> Depends on Support plans customer chooses.
+
+RCA : Root Cause Analysis
+ 
+Basic SP : Cost : Free, 1 ==> Included.. 2 ==> No technical Assiatance.
+--> AWS Trusted Advisor : Some set of advises.. 
+--> AWS Developer forums (AWS Re:Post) / Knowledge base articles.. 
+
+Developer SP : Cost : 29$/Month.. 1 ==> Included..  
+--> AWS Trusted Advisor : Some set of advises.. 
+--> Only one user can raise tickets.. Unlimited tickets..
+2 ==> 12-24 Hrs local business hours (8am - 8pm), email.. 
+
+
+Case Severity : 
+general guidance = 24 hrs
+System impaired = 12 hrs
+
+
+Business SP : Cost : 100$/Month 1 ==> Included..  
+--> AWS Trusted Advisor : All advises.. 
+--> Any user can raise tickets.. Unlimited tickets..
+2 ==> 1 Hrs hours, 24x7 email, chat and phone support.. 
+
+Case Severity : 
+General guidance = 24 hrs
+System impaired = 12 hrs
+Production System Impaired = < 4 Hrs
+production System Down = < 1 hr
+
+
+Enterprise on-ramp SP : Cost : 5500 $/Month 1 ==> Included..  
+--> AWS Trusted Advisor : All advises.. 
+2 ==> 30 Min, 24x7 email, chat and phone support.. 
+--> Any user can raise tickets.. Unlimited tickets..
+--> AWS Anaually (one-time) perform operational and architectural review.. 
+
+Case Severity : 
+General guidance = 24 hrs
+System impaired = 12 hrs
+Production System Impaired = < 4 Hrs
+production System Down = < 1 hr
+Business critical system Down = < 30 min
+
+
+Enterprise SP : Cost : 15000 $/Month 1 ==> Included..  
+--> AWS Trusted Advisor : All advises.. 
+2 ==> 15 Min, 24x7 email, chat and phone support.. 
+--> Any user can raise tickets.. Unlimited tickets..
+--> AWS Anaually perform operational and architectural review.. 
+--> AWS Allocated a Dedicated TAM (Technical Account manager)
+
+Case Severity : 
+General guidance = 24 hrs
+System impaired = 12 hrs
+Production System Impaired = < 4 Hrs
+production System Down = < 1 hr
+Business critical system Down = < 30 min
+
+
+AWS Shared Security Responsibility Model
+
+Security OF the Cloud : AWS Responsibility
+Security IN the cloud : Customer Responsibility
+
+
+===========================================================================================
+
+D: 02/08/2023
+
+2 types of users in AWS.
+
+--> root user : Will have unrestricted access on AWS account. (manage any service also, account management)
+
+--> IAM user : Designed to manage user access. We can limit user access on specific services. To follow least privilages mechanism, we need to depend on this user.
+
+Scenario : 
+S3 : AWS version of GDrive : Storage Service.. : 
+ec2 : Elastic compute cloud : we launch and manage servers.. 
+
+--> Least privilages mechanism : Providing least permissions to perform his job.
+
+Authentication : having a valid username and password 
+Authorization : access on the services.
+
+
+IAM user Access Types in AWS:
+
+--> AWS management console access /gui : Browser 
+--> programatic access / cli : command prompt / cdk
+
+User creation : 
+
+Setup username
+--> choose access type
+	--> Enable "console access", "Password setup", and enforce him to setup new password.
+	
+Setup permissions:
+
+policy : Set of permissions on AWS environment.
+
+
+IAM : FREE ALWAYS. 
+
+Task 1 : Create an AWS account, Create a zero spend budget. 
+
+Task 2 : Create an IAM user, Username: "s3user" and allocate "s3fullaccess" policy, Login as this user and verify his access. (navigate to s3(no error), then navigate to ec2(error)).
+
+Task 3 : Create an IAM user, Username: "ec2user" and allocate "ec2fullaccess" policy, Login as this user and verify his access. (navigate to s3(error), then navigate to ec2( no error)).
+
+Task 4 : Create an IAM user, Username : "yourname" and allocate "AdministratorAccess" policy, Login as this user and verify his access on s3, ec2 and iam.
+--> use this user to view "billing information" of this account. allow/deny.??
+
+try Task 4, by login as "root user". ==> allow
+
+===========================================================================================
+
+D: 03/08/2023
+
+--> Policy: Document that contains set of permissions on AWS account, Writtens in JSON format.
+
+	--> AWS Managed policy - Job function (DBA/networkadmin - full-rds, read-ec2, some perm on - s3)
+	--> AWS Managed policy (based on service) - s3 (s3full, s3readon, s3lambda)
+	--> Customer managed policy : you can create and manage these, based on your custom req. 
+
+Effect : Allow / Deny
+Service : s3/ec2/rds
+Actions : * / (put/get/delete/list/read/write)
+Resources : with in the service, we can limit to spoecifiuc resources (onebucket/db)
+
+Requirement : I need one poliy, that can allow s3 and ec2 full.
+
+Requirement : I need an IAM user, Who have "FullAccess" on all the services, but not on "s3".
+
+
+
+
+Task : Task 4 user, not bale to view the billing information. "Allow this user to view billing information". 
+
+Task 2 : create an IAM user, Provide him "AdministratorAccess", but dont allow him to perform anything on "s3 service".
+
+Task 3 : Create an IAM user, Provide him "s3fullaccess", create a custom policy and associate.  Should deny "DELETE BUCKET" operation and "DELETE OBJECT".
+
+
+Task 4 : Create an IAM user, Provide him "s3fullaccess", while creating policy add a condition to work only from specific Public IP address. 
+
+183.82.125.5/32.. Now get your home network piublic ip  11.11.11.11/32 and test.
+
+https://whatismyipaddress.com/  get your public ip and add /32 to it.
+
+
+===========================================================================================
+
+D: 04/08/2023
+
+Conditions
+Inline
+Permisssions boundary
+user activities
+credentials report
+
+Conditions : Help us to restrict user to access our environment from "corporate IP" only.
+--> We can limit users to work only on specific region.
+
+
+Inline : Alligned to one particular entity (user/role)
+--> When user exceeded allowed policy attachements, we can use this inline policy.
+--> We cannot attach to multiple users (we cannot reuse).
+--> We cannot filter all inline polocies we have in our account.
+
+Permissions boundary : To restrict users to max permisisons on top of his allocated permissions.
+
+User Activities : We can use "CloudTrail" to track all IAM user activities. This service enabled by defaultly, it can store last 90 days logs. 
+--> We can create a trail and store all logs in s3 bucket, we can store for unlimityed days/ we can setup retention using s3 life cycle.
+
+Credentials Report : Help us to get all user login/password setup/expiration information.
+
+
+
+Task : Create a Policy to allow IAM users to activate MFA themselfs.
+--> Create an IAM user, Provide him  "s3fullaccess", login as this user and try to activate MFA.
+
+Task 2 : Allow an IAM user to work only in "ap-south-1", Provide him "AdministratorAccess"
+--> Login and try to create a bucket in "mumbai", should allow, any other region should deny.
+
+
+
+
+
+===========================================================================================
+PAYMENT DETAILS👇
+
+AWS @ 7:30 AM (IST) by Mr.Avinash From 25th July 
+
+Dur: 45 Days
+Fee: with videos : 12,000/-
+without videos : 8,000/-
+
+If you are enrolling for AWS Join Free LIVE Linux Classes UNIX | LINUX
+
+Note: Videos will be shared on daily basis & after completion of course additional 6 months valid for videos available!
+
+Payment Link: https://rzp.io/l/Naresh-IT
+
+Bank Details 
+Name: Naresh i Technologies
+A/C No. 50200022639833     
+Bank: HDFC
+A/C Type: Current Account
+IFSC Code: HDFC0001627
+MICR Code: 500240035
+Branch Code: 001627
+Branch:  Ameerpet
+
+After the payment please share your transaction screenshot to ADMIN  SATISH 9154898075 then only you will get the new link for regular classes 
+
+ ADMIN SATISH 9154898075
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
