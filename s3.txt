@@ -240,3 +240,162 @@ Task : Download a template from Internet. Deliver the webiste using s3 - static 
 https://www.free-css.com/free-css-templates
 
 =================================================================================
+
+D: 10/08/2023
+
+Deny upload object operation on a particular bucket. : Bucket policy
+
+Bucket ARN : arn:aws:s3:::avinash.bucket
+IAM User ARN / Principal : arn:aws:iam::501170964283:user/s3user
+Effect : Allow / Deny : Deny
+Action / Operation : PutObject, DeleteBucket
+
+
+Object level / Inside bucket possible operation : arn:aws:s3:::avinash.bucket/*
+Bucket level : arn:aws:s3:::avinash.bucket
+if you dont know bucket level/object level ; give both
+(arn:aws:s3:::BUCKETNAME,arn:aws:s3:::BUCKETNAME/*)
+
+=================================================================================
+
+Event notifications : 
+
+--> SNS : Simple Notification Service : 1000 EMAILs Free Tier eligibility
+--> SQS : Simple Queue Service
+--> Lambda 
+
+--> Make sure you edit the SNS topic's "Access Policy to everyone".
+
+--------------------
+
+Task : Create an IAM user with "S3FullAccess". 
+We need to restrict this user to perform "DeleteObject" opertion from a specific bucket (bucketname)
+
+Task 2 : create a bucket policy, that allow "one spcific IAM USer", to perform anything on this bucket. Remaining all users should not able to perform anything on this bucket.
+--> Refer the policy we have at bottom of this doc
+
+
+Task 3 : Create a bucket, Allocate this bucket to only one specific user. Allow him to perform "GetObject", "PutObject" and "DeleteObject". This User should not able to view all the bucket we have in s3 platform.
+--> Only with the help of a bucket URL, this guy should able to view.   --> IAM POLICY
+
+https://repost.aws/knowledge-center/s3-console-access-certain-bucket
+
+
+Task 4 : Make a bucket public for eveyone using "BUCKET POLICY".
+--> Refer the policy we have at bottom of this doc
+
+
+=================================================================================
+
+
+
+
+Object Lock : 
+--> Versioning must be enabled.
+Permanently allows objects in this bucket to be locked. Additional Object Lock configuration is required in bucket details after bucket creation to protect objects in this bucket from being deleted or overwritten.
+
+Governance : Users with specific IAM permissions can overwrite or delete protected object versions during the retention period.
+
+Compliance : No users can overwrite or delete protected object versions during the retention period.
+_____
+
+
+Server access logging : enable logging on bucket.
+
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/LogFormat.html
+
+Cloudtrail : Data events : It allow us to log all s3 activities (Current buckets and future buckets).
+____________
+
+Requester pays : the requester pays for requests and data transfer costs, and anonymous access to this bucket is disabled. Instead of bucket owner data requester need to pay for the data transfer & request.
+--> Anonomus access disables once we enable this feature.
+_______
+
+Transfer acceleration : Uses Edge locations for data transfer. (COST US)
+S3 Transfer Acceleration is not supported for buckets with periods (.) in their names
+
+https://s3-accelerate-speedtest.s3-accelerate.amazonaws.com/en/accelerate-speed-comparsion.html?region=ap-south-1&origBucketName=2505-avinash
+
+========================================================================================
+
+
+Task : Try to access s3 using 3rd party applications. (S3 browser, Cyberduck, Cloudberry explorer, winscp)
+Steps : Create an IAM user, generate Accesskey and SecretKey. Use this with 3rd party tool.
+
+Task 2 : What is presigned URL. Configure an object to generate a presign url to expire after 60 sec.
+
+Task 3 : limit an IAM user to work only on his specific bucket.
+
++++++++++++
+Requirement : IAM user has its s3 bucket, he need to get access on his own bucket. : IAM Policy.. Upload, download and delete..
+https://s3.console.aws.amazon.com/s3/buckets/bucketname
+
+help : https://repost.aws/knowledge-center/s3-console-access-certain-bucket
+
+https://s3.console.aws.amazon.com/s3/buckets/2505-avinash
+
+Requirement : Create an IAM user, Create a bucket for this user... Now, This user should get access only on his specific bucket..
+He should not able to view all the s3 buckets.
++++++++++
+
+Task 4 : Create an IAM user.. Provide him S3FullAccess.. But on a specific bucket "Deny" him to perform "DeleteObject, DeleteBucket, PutObject, getbucketpolicy"
+
+Task 5 : Create an S3 Bucket, Create an SNS topic add a subscriber.. Configure Events on s3 to trigger an email when Object creation and deletion happend.
+
+Task 6 : Apply IP restriction on bucket policy and test it.
+
+Do it with IAM policy first.. Then Do it with bucket policy.
+
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-IP
+
+
+
+
+
+
+
+-------------------------------------
+Task 2 Policy example : 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::bucketname",
+                "arn:aws:s3:::bucketname/*"
+            ],
+            "Condition": {
+                "StringNotLike": {
+                    "aws:PrincipalArn": [
+                        "arn:aws:iam::1212121212:user/11111111"
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+
+------------------------------
+Task 4 : 
+
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1691635080227",
+    "Statement": [
+        {
+            "Sid": "Stmt1691635078528",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::policy.test.s3user/*"
+        }
+    ]
+}
+
