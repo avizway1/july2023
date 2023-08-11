@@ -271,6 +271,7 @@ Event notifications :
 Task : Create an IAM user with "S3FullAccess". 
 We need to restrict this user to perform "DeleteObject" opertion from a specific bucket (bucketname)
 
+
 Task 2 : create a bucket policy, that allow "one spcific IAM USer", to perform anything on this bucket. Remaining all users should not able to perform anything on this bucket.
 --> Refer the policy we have at bottom of this doc
 
@@ -287,8 +288,55 @@ Task 4 : Make a bucket public for eveyone using "BUCKET POLICY".
 
 =================================================================================
 
+Task 2 Policy example : 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::bucketname",
+                "arn:aws:s3:::bucketname/*"
+            ],
+            "Condition": {
+                "StringNotLike": {
+                    "aws:PrincipalArn": [
+                        "arn:aws:iam::1212121212:user/11111111"
+                    ]
+                }
+            }
+        }
+    ]
+}
 
 
+------------------------------
+Task 4 : 
+
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1691635080227",
+    "Statement": [
+        {
+            "Sid": "Stmt1691635078528",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::policy.test.s3user/*"
+        }
+    ]
+}
+
+
+
+=================================================================================
+
+D: 11/08/2023
 
 Object Lock : 
 --> Versioning must be enabled.
@@ -338,64 +386,81 @@ Requirement : Create an IAM user, Create a bucket for this user... Now, This use
 He should not able to view all the s3 buckets.
 +++++++++
 
-Task 4 : Create an IAM user.. Provide him S3FullAccess.. But on a specific bucket "Deny" him to perform "DeleteObject, DeleteBucket, PutObject, getbucketpolicy"
-
-Task 5 : Create an S3 Bucket, Create an SNS topic add a subscriber.. Configure Events on s3 to trigger an email when Object creation and deletion happend.
-
-Task 6 : Apply IP restriction on bucket policy and test it.
-
-Do it with IAM policy first.. Then Do it with bucket policy.
-
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-IP
+Task 4 : Create an S3 Bucket, Create an SNS topic add a subscriber.. Configure Events on s3 to trigger an email when Object creation and deletion happend.
 
 
+===========================================================================================================
+
+Performance : 
+3500 PUT Object per second per prefix
+5500 GET Object per second per prefix
+
+--> Increase the uniqueness for the object names.
+--> Use more prefixes (folders)
+
+________________________________________________________________________________________
+
+
+Pricing : https://calculator.aws/
+Free Tier : https://aws.amazon.com/free
+
+
+Storage Class Analysis : Analyze storage access patterns to help you decide when to transition objects to the appropriate storage class. 
+
+Cross-origin resource sharing (CORS)
+The CORS configuration, written in JSON, defines a way for client web applications that are loaded in one domain to interact with resources in a different domain.
+
+CORS : https://www.youtube.com/watch?v=YrfDLrSVxQ8&t=4s
+
+________________________________________________________________________________
+
+FOr Put of new object, "read after write consistency". (If upload success, we can start accessing the data without any delay)
+Eventual consistenacy For overwrite an object / delete an object. (AFter delete shown as success, we may get response for the request for some milli seconds) (You have uploaded object with latest data and trying to access, you have chances to get previous data object) 
+
+________________
+
+If we have larger file to uploade to s3 paltform, We can initiate the "Multi Part Upload". 
+
+_________________
+
+AWS Snow Family : 
+--> AWS snowcone : 8 TB
+--> AWS Snowball : 100 TB
+--> AWS Snowball edge : 40 - 100 TB
+--> AWS Snow mobile : PB scale container
+
+1 pb data, 1 gbps internet line with 80%.. 20-25 yrs
+
+___
+
+AWS Direct Connect : Dedicated connection between on-premise/local environment to AWS environment. 3-4 weeks time required. We need to choose the required bandwidth. 
+--> Airtel, jio, sify
+
+Site-to-site VPN : Happens over the internet.
+
+
+https://aws.amazon.com/premiumsupport/knowledge-center/s3-console-access-certain-bucket/
+
+
+How to Perform multiPart upload to S3 : 
+https://www.youtube.com/watch?v=ZJaNTLKz334
+
+
+=================================================================================
+
+Certification Topics : 
+--> Storage classes
+--> Life Cycle management rule
+--> replication
+--> encryption
+--> versioning
+--> Data Migration (Snow Family)
+--> Data consisntency
+--> Data performance 
 
 
 
 
 
--------------------------------------
-Task 2 Policy example : 
 
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Deny",
-            "Principal": {
-                "AWS": "*"
-            },
-            "Action": "s3:*",
-            "Resource": [
-                "arn:aws:s3:::bucketname",
-                "arn:aws:s3:::bucketname/*"
-            ],
-            "Condition": {
-                "StringNotLike": {
-                    "aws:PrincipalArn": [
-                        "arn:aws:iam::1212121212:user/11111111"
-                    ]
-                }
-            }
-        }
-    ]
-}
-
-
-------------------------------
-Task 4 : 
-
-{
-    "Version": "2012-10-17",
-    "Id": "Policy1691635080227",
-    "Statement": [
-        {
-            "Sid": "Stmt1691635078528",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::policy.test.s3user/*"
-        }
-    ]
-}
 
