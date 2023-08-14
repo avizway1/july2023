@@ -147,11 +147,10 @@ ________________________
 
 Task : Launch windows ec2 instance and using keypair get connect to ec2 instance.
 
-Task 2 : Change the password of "Administrator", Disconnect from the instance. Now try to login to ec2 instance using "keypair pwd", "Custom password".
+Task 2 : Change the password of "Administrator", Disconnect from the instance. 
+Now try to login to ec2 instance using "keypair pwd", "Custom password".
 
-Task 3 : "Create a new user" in ec2 instance and provide him "Local administrator rights", also provide him "Remote desktop permissions".. Take a session with this user along with administrator.
-
-Task 4 : Install "IIS" and deliver a webpage for everyone.
+Task 3 : "Create a new user" with in the ec2 instance and provide him "Local administrator rights", also provide him "Remote desktop permissions".. Take a session with this user along with administrator.
 
 ____
 
@@ -159,6 +158,6 @@ FREE TIER : 750 Hrs/Month t2.micro windows instance (ondemand)
 750 Hrs/Month t2.micro Linux instance (ondemand)
 
 1 instance x 24 hrs x 31 days = 744 Hrs 	--> 750 Hrs Free tier
-2 instance x 24 hrs x 16 days = 768 Hrs	
+2 instance x 24 hrs x 16 days = 768 Hrs
 
 =======================================================================================
