@@ -804,6 +804,7 @@ ________________________________________________________________________________
 --> Create a security group and open NFS protocol. 
 			--> Open for entire VPC IP address
 			--> Open for ec2 instance private IP addresses
+			--> Open for everyone (not recommended)
 		** --> Open for ec2 instance Security group (pipeline mechanism)
 
 
