@@ -780,6 +780,129 @@ nproc --> cpu count
 
 =============================================================================================
 
+D: 26/08/2023
+
+EFS : Elastic File System : File Share : Shared Storage solution for Multiple ec2 instances. : 
+--> Network File System : NFS v4.1 : Port 2049
+--> Support only Linux OS 
+--> No Pre Provisioning required.
+--> Add entry in "/etc/fstab" file.  Get entry info from "/etc/mtab" file
+
+mkdir server1
+
+
+
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0478977eaa3b0473a.efs.ap-south-1.amazonaws.com:/
+
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0478977eaa3b0473a.efs.ap-south-1.amazonaws.com:/ /var/www/html/
+
+
+==> For windows OS we can use FSx, Works with SMB Protocol (Server message block)
+
+_______________________________________________________________________________________
+
+--> Create a security group and open NFS protocol. 
+			--> Open for entire VPC IP address
+			--> Open for ec2 instance private IP addresses
+		** --> Open for ec2 instance Security group (pipeline mechanism)
+
+
+
+Task : Create EFS and Mount it to multiple ec2 instances. Deliver Web Content to both the instances from EFS.
+
+
+Task : Launch an ec2 instance, connect to it, Create EFS.. Install httpd in your ec2 instance.. Mount EFS to /var/www/html/ and create index.html... make that EFS mount permanent. 
+==> Now create a GOLDENAMI.. 
+==> Configure ASG with this GOLDENAMI.. COnnect to any of the ec2 instance, modify the content.. this modification should reflect in all instance.. 
+
+============================================================================================
+
+Eventbridge : 
+
+--> Event Driven process
+--> Scheduled process
+--> Trigger both
+
+ Event Bridge : 
+
+ {"version":"0","id":"eec4eda2-6639-e7b3-150d-c6461f1f0686","detail-type":"EC2 Instance State-change Notification","source":"aws.ec2","account":"501170964283","time":"2022-04-08T02:59:33Z","region":"ap-south-1","resources":["arn:aws:ec2:ap-south-1:501170964283:instance/i-00f56eba78b7b4e65"],"detail":{"instance-id":"i-00f56eba78b7b4e65","state":"stopped"}}
+
+ Sample Event : 
+
+ INPUT PATH:
+
+ {"instance-id":"$.detail.instance-id", "state":"$.detail.state", "time":"$.time", "region":"$.region", "account":"$.account"}
+
+ INPUT TEMPLATE: 
+
+ "At <time>, Status of your EC2 instance <instance-id> in the AWS Region <region> has changed to <state>."
+
+ https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
+ https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#eb-cron-expressions
+
+
+Task 1 : Configure Eventbridge to stop an ec2 instance at a particular time using Crontab. (9:15 Am)
+
+Task 2 : Configure to stop an ec2 instance after 5 minutes, trigger an email with custom email format.
+
+Optional Task 3 : Configure to get an alert when someone deleted an s3 bucket / someone deleted data from specific s3 bucket.
+
+
+
+
+
+
+
+
+
+
+________________________
+
+Instance store volumes : We don't use this in real environments.   (NO FREE TIER ELIGIBILTY)
+	--> Also called as Ephemeral storages (Temporary storage).
+	--> We cannot STOP/Start the instance.
+	--> Storage will be delivered from underlying host/physical resources.
+	--> If required, we can reboot. We don't loss any data.
+	--> If underlying h/w failure happens, we'll loss all the data.
+
+________________________
+
+Instance Isolation : https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjr993FsAyS65uL4QPbGu8n_JcB6Fwq6jDylWglIapsQQjHfbcbir83OT-I-_a-nhvvo8&usqp=CAU
+
+Dedicated and Shared tenancy :
+--> Shared tenancy : underlying hardware shared with multiple customers.
+--> Dedicated tenancy:
+	--> Dedicated instance : Dedicated instance provided by aws. No control on backend process.
+	--> Dedicated host : We can apply licenses at underlying physical resources. Also, we can launch multiple instances on a dedicated host.
+
+_______________________________________________________________________________________
+
+Plecement Groups : 
+--> Cluster PG
+--> partition PG
+--> Spread PG
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+
+======================================
+
+Platform : Windows
+Platform : Linux
+
+Naming Standards : P-Wi-wt-ad :   P-LI-WT-HD :
+		: S-Li-ap2-c1 : 
+
+s : Staging / NonProd
+u : uat 
+p : production
+
+wi : Windows
+li : Linux
+wt : app code, tw : app code
+c1/c2 : Client id 
+
+
+____________________________________________________________________________________________
 
 
 
