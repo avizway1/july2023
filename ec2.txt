@@ -918,19 +918,8 @@ Now create a new role, associate "S3FullAccess" and replace the existing role an
 Task 4 : Mount an s3 bucket to ec2 instance.
 Help Link : https://www.youtube.com/watch?v=GSsrnnU9JLw
 
-
-
 Optional task : Create a role to roam across multiple AWS accounts (using switch role).
 Help Link : https://www.youtube.com/watch?v=sZiiB4yF0VY
-
-
-
-
-
-
-
-
-
 
 ==========================================================================================
 
@@ -965,21 +954,28 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 
 Platform : Windows
 Platform : Linux
+		
+[OS]
+[Clinet]
+[Project/application]
+[Environment]
+[Number]
 
-Naming Standards : P-Wi-wt-ad :   P-LI-WT-HD :
-		: S-Li-ap2-c1 : 
 
-s : Staging / NonProd
-u : uat 
-p : production
+os : Windows - WIN, Linux - LNX
+Client : varies : ABC / XYZ
+Project/App : varies : MOnitoring / db / web / app 
+Enviornment : sandbox / dev / sqa / sit / uat / prd 
 
-wi : Windows
-li : Linux
-wt : app code, tw : app code
-c1/c2 : Client id 
 
+WIN-BOA-DBS-PRD-002
 
 ____________________________________________________________________________________________
+
+
+
+i*ku7wo2O)J@Q(TD=dBmdo.zjeNI4;!S
+
 
 
 Systems Manager run command :
@@ -1001,6 +997,9 @@ ElasticBeanstalk : It provides preconfigured platforms.
 --> We can deploy/upload our code to this platform. 
 --> AWS Creates ELB, ASG automatically for our instances.
 --> Less customisations at OS level, We cannot deliver multiple applications. 
+--> it comes under PaaS (Platform as a Service)
+
+--> If any customer/client dont want to manage infra to deliver their application, we can suggest beanstalk.
 
 
 	
