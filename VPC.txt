@@ -91,16 +91,6 @@ https://www.davidc.net/sites/default/subnets/subnets.html
 
 
 
-
-
-
-
-
-
-
-
-
-
 _____________________________________________________________________________________
 
 
@@ -116,11 +106,16 @@ CIDR : Classless InterDomain Routing :
 Public Subnet : Internet facing subnet.. :
 Private Subnet : Non-Internet facing subnet.. : 
 
-How big VPC we required.?		Ans :  1000 Instances..  : 192.168.0.0/21
-How many subnets we required within the VPC..?		Ans : 6
-How many public SUbnets required within vpc..?		Ans : 2 (192.168.0.0/24, 192.168.1.0/24)
-How many private SUbnets required within vpc.?		Ans : 4 (192.168.2.0/24, 192.168.3.0/24, 192.168.4.0/24 and 192.168.5.0/24)
-Are you going to create any subnets in future.?		Ans : Yes (Have some IPs for future use). (192.168.6.0/24 and 192.168.7.0/24)
+How big VPC we required.?		Ans : 2000 Instances..  : 10.0.0.0/21
+How many subnets we required within the VPC..?		Ans : 6 (2 public & 4 private)
+How many public SUbnets required within vpc..?		Ans : 10.0.0.0/24 & 10.0.1.0/24 
+How many private SUbnets required within vpc.?		Ans : 10.0.2.0/24, 10.0.3.0/24, 10.0.4.0/24 & 10.0.5.0/24
+Are you going to create any subnets in future.?		Ans : Yes (Have some IPs for future use).  
+10.0.6.0/24 & 10.0.7.0/24
+
+ELB -> 2 subnets to run elb (ap-south-1a & ap-south-1b)
+APP -> 2 more subnets (ap-south-1a & ap-south-1b)
+DB -> 2 more subnets (ap-south-1a & ap-south-1b)
 
 
 Pubic Subnets : Place one public-1 subnet in ap-south-1a and public subnet-2 in ap-south-1b.
@@ -132,27 +127,23 @@ Public Subnet : Internet facing.. : ELB, Jump/ Bastian Host..
 Private Subnet : DBs, Application, Web servers.. 
 
 Step 1 : Create a VPC.
-	VPC Name : CustomVPC		VPC CIDR : 192.168.0.0/20
+	VPC Name : CustomVPC		VPC CIDR : 192.168.0.0/21
 
 Step 2 : Create Subnets within CustomVPC. 
 
-Name : Public Subnet 1a : ap-south-1a : 192.168.0.0/23
-Name : Public Subnet 1b : ap-south-1b : 192.168.2.0/23
-Name : Private SUbnet 1a : ap-south-1a : 192.168.4.0/23
-Name : Private Subnet 1b : ap-south-1b : 192.168.6.0/23
 
 Step 3 : Create an Internet Gateway and associate with CustomVPC.
 --> One VPC can contains one IGW.
 
 Step 4 : Create RouteTables and Associate appropriate Subnets, add required routes.
 
---> PublicRoute : Go to SUbnet Association and choose "Public SUbnet". Navigate to Routes and add a route via IGW. 	 (0.0.0.0/0 --> IGW)
+--> PublicRoute : Go to SUbnet Association and choose all "Public SUbnets". Navigate to "Routes" and add a route via IGW. 	 (0.0.0.0/0 --> IGW)
 
 --> PrivateRoute : Go to SUbnet Association and choose "Private SUbnet". (DONT ADD INTERNET GATEWAY).
 
 Step 5 (Optional) : Navigate to Subnets, Choose "Public SUbnet", Actions, "Modify auto assign public ip settings", Enable.
 
-Step 6 (Optional) : Go to VPC, "Edigt VPC Settings", and "Enable DNS hostnames" to get DNS host names. Its required for our RDS Clusters.
+Step 6 (Optional) : Go to VPC, "Edit VPC Settings", and "Enable DNS hostnames" to get DNS host names. Its required for our RDS Clusters.
 
 
 JUMP Server / Bastian Host : Is a Dedicated EC2 instance, Runs in CustomVPC PUblicSUbnet and can be used to connect to all the "Private Subnet" ec2 instances.
@@ -168,10 +159,16 @@ Task : Create a VPC with 4 Subnets. (2 Public SUbnets and 2 Private Subnets)
 2 Public SUbnets (ap-south-1a, ap-south-1b)
 2 Private SUbnets (ap-south-1a, ap-south-1b)
 
-Task 2 : draw.io website and design this diagram.
+
+Task  3: Create a VPC with 4 Subnets. (2 Public SUbnets and 2 Private Subnets)
+2 Public SUbnets (ap-south-1a, ap-south-1b)
+4 Private SUbnets (ap-south-1a, ap-south-1b)
+
+Task  : user task 3 settings and draw.io website and design this diagram.
 https://app.diagrams.net/?splash=0&libs=aws4
 
-____________
+
+==================================================================================
 
 PublicRoute : We need to associate InternetGateway. 
 PrivateRoute without internet : Don't add NAT.
@@ -179,7 +176,7 @@ PrivateRoute With Intenet : Create NAT Gateway and add NAT Gateway.
 
 _____________
 
-Enable Logging on VPC : 
+Enable Logging at VPC : 
 Flow Logs: We can enable flowlogs at 
 --> VPC Level
 --> Subnet Level
