@@ -187,7 +187,6 @@ We can choose destination as 1. S3 bucket 2. Cloudwatch Logs groups.
 _____________________________________________________________________________________
 
 
-
 VPC NAT Gateway (NO FREE TIER ELIGIBILITY): Is designed to provide Internet to private Subnet resources. NAT always runs in custom VPCs public subnet. We need to generate an EIP (Elastic IP). 
 
 Private subnet ec2 instances want to access something from internet / endpoint hosted over the internet / patching purpose it needs internet. 
@@ -248,7 +247,7 @@ Region		ap-south-1							ap-south-1
 ACC ID		501170964283						250886770413
 
 
-8 Subnets in environment :  2 public-web (private), 2 application (private), 2 Database/data (private), 2 lambda
+8 Subnets in environment :  2 public-web (public), 2 application (private), 2 Database/data (private), 2 lambda
 
 VPN Connectivity (openvpn): https://www.youtube.com/watch?v=JSTyjISscNg
 Transit Gateway : https://www.youtube.com/watch?v=xyLlMBHy2wc
@@ -263,8 +262,11 @@ Site-to-site vpn settings
 Task : Practice entire VPC (except NAT gateway : Use NAT Instance)
 
 
+-----------------
+
 Connect to Private Subnet resources without bastian host : 
 https://www.youtube.com/watch?v=CN-_Y3uqC44&t=3s
+
 
 Single instance: 
 ssh -i 730-Linux.pem ec2-user@i-0e78400f916d546a0 \
