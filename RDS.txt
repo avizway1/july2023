@@ -96,24 +96,13 @@ Task 3 : Install mysql workbench in your local laptop. Run your mysql rds cluste
 
 reference video: https://www.youtube.com/watch?v=qulcnNu8g7o
 
-
-
-
-
-
-
-
-
-
-
-
 _________________________________________________________________________________________
+
+D: 09/09/2023
 
 
 MultiAZ Deployment : Designed for Failover/FT purpose. : Creates a standby in a different Availability Zone (AZ) to provide data redundancy, eliminate I/O freezes, and minimize latency spikes during system backups.
 
- 192.168.1.241
- 
 
 Automated Backup : This feature creates backup copies of our RDS instances automatically.  Based on retention period, we can have backup copies in our aws env to restore. 
 Disable : 0 
@@ -149,10 +138,6 @@ RDS won't work on In-Place restoration. Restoration happens as a new rds db inst
 
 Restore to point in time : You are creating a new DB instance from a source DB instance at a specified time.
 
-___
-
-
-Task : Launch postgresql in customvpc private subnet, and install pgadmin in jump server and connect to it.
 
 ____________________________________________________________________________________
 
@@ -189,6 +174,34 @@ DAX : Dynamodb accelarator : in-Memory caching solution for DynamoDB.
 __________________
 
 https://docs.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-nosql-data#:~:text=Relational%20databases%20provide%20a%20store%20of%20related%20data%20tables.&text=Instead%20of%20joining%20tables%20of,of%20a%20single%20database%20partition.
+
+
+_________________
+
+
+Task : Launch postgresql in customvpc private subnet, and install pgadmin in jump server and connect to it.
+
+__________________
+
+Task : 
+https://aws.amazon.com/getting-started/hands-on/create-nosql-table/
+
+Developers:
+Task :
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TicTacToe.html
+
+--------------------
+
+Task 1 : https://aws.amazon.com/getting-started/hands-on/amazon-efs-backup-and-restore-using-aws-backup/?trk=gs_card
+
+Task 2 : https://aws.amazon.com/getting-started/hands-on/amazon-ebs-backup-and-restore-using-aws-backup/?trk=gs_card
+
+
+
+
+
+
+
 ___________________
 
 Elasticache : In-Memory caching solution for RDS service. It have 2 open source caching engines. 
@@ -200,14 +213,6 @@ ___________________
 Amazon DocumentDB : MongoDB compatable database. 
 __________________
 
-Task : 
-https://aws.amazon.com/getting-started/hands-on/create-nosql-table/
-
-Developers:
-Task :
-https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TicTacToe.html
-
-________________
 
 Task : launch an rds mysql db instance-1.. Now export/restore the shared db... 
 
@@ -267,9 +272,17 @@ https://www.youtube.com/watch?v=fIEwoFaXExQ
 
 ----------------------------------
 
-Task 1 : https://aws.amazon.com/getting-started/hands-on/amazon-efs-backup-and-restore-using-aws-backup/?trk=gs_card
-
-Task 2 : https://aws.amazon.com/getting-started/hands-on/amazon-ebs-backup-and-restore-using-aws-backup/?trk=gs_card
 
 Task 3: COST US https://aws.amazon.com/getting-started/hands-on/migrate-rdsmysql-to-auroramysql/?trk=gs_card (No free tier)
+
+
+
+
+
+
+
+
+
+
+
 
