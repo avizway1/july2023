@@ -197,12 +197,9 @@ Task 1 : https://aws.amazon.com/getting-started/hands-on/amazon-efs-backup-and-r
 Task 2 : https://aws.amazon.com/getting-started/hands-on/amazon-ebs-backup-and-restore-using-aws-backup/?trk=gs_card
 
 
+====================================================================================
 
-
-
-
-
-___________________
+D: 12/09/2023
 
 Elasticache : In-Memory caching solution for RDS service. It have 2 open source caching engines. 
 --> MemcacheD
@@ -211,6 +208,7 @@ Elasticache : In-Memory caching solution for RDS service. It have 2 open source 
 ___________________
 
 Amazon DocumentDB : MongoDB compatable database. 
+Amazon Neptune : Fast and reliable graph database
 __________________
 
 
@@ -227,11 +225,11 @@ https://www.youtube.com/watch?v=SXuOjfKpIrs
 __________________
 
 Homegenious : mysql --> DMS --> AWS RDS Mysql
-heterogenious : IBm DB2 --> SCT (Schema Convertion tool) --> DMS --> AWS RDS Mysql/aurora
+heterogenious : IBM DB2 --> SCT (Schema Convertion tool) --> DMS --> AWS RDS Mysql/aurora
 
 
 Step 1 : create a DMS cluster (dms.t2.micro)
-Step 2 : Create source endpoint (Create an RDS cluster, and restore the DATAbase), test the connectivity to DMS cluster
+Step 2 : Create source endpoint (Create an RDS cluster, and restore the shared sample Database), test the connectivity to DMS cluster
 Step 3 ; Create a Target endpoint (Create a new rds cluster) test the connectivity to DMS cluster
 
 Step 4 : Create a Migration task using Source and target endpoints (step 2 and 3)
@@ -255,13 +253,9 @@ Redshift:
 leader node : Designed to run query on compute nodes.
 Compute Node : it stores actual data
 
-
-Amazon Neptune : Fast, reliable graph database
-Amazon DocumentDB : MongoDB compatibility
-
-
 _________________
-**Cost you
+
+**Cost you**
 
 Task : launch an ec2 instance in mumbai region.. connect to it and make it as webserver.. 
 
@@ -274,13 +268,6 @@ https://www.youtube.com/watch?v=fIEwoFaXExQ
 
 
 Task 3: COST US https://aws.amazon.com/getting-started/hands-on/migrate-rdsmysql-to-auroramysql/?trk=gs_card (No free tier)
-
-
-
-
-
-
-
 
 
 
