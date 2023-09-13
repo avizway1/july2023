@@ -18,7 +18,7 @@ In Real env: We create a trail for Management, another trail for data and anothe
 
 DataDog, Splunk, site24x7
 
-__________________________________
+==================================================
 
 Config : (Config works with Cloudtrail) : Record and evaluate configurations of your AWS resources. "NO FREE TIER"
 --> No s3 bucket should have public access. (Non_Compliant resource)
@@ -75,6 +75,7 @@ Shield Enabled for all the aws account.
 Shield advanced cost us 3000$/Month.. AWS Team monitor the DDoS attack/traffic.
 
 
+
 ___
 
 SMS : Server Migration Service : 
@@ -103,7 +104,11 @@ https://www.youtube.com/watch?v=fIEwoFaXExQ
 
 
 
+===========================
 
+https://www.youtube.com/playlist?list=PLneBjIzDLECnvHUiqAe5DYHcnXSOTWeXO
+
+===========================
 
 
 
